@@ -7,23 +7,26 @@
 
 .door {
   height: 300px;
-  width: 20%;
+  width: 10%;
+  border: 2px solid gray;
+  background-color: bisque;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: black;
   margin: 0 40px;
 }
 
 .door_chosen {
   height: 300px;
-  width: 20%;
+  width: 10%;
+  border: 2px solid gray;
+  background-color: darkkhaki;
   padding: 10px 20px;
   cursor: pointer;
   margin: 0 40px;
-  background-color: red;
 }
 
 .door img {
   width: 200px;
   height: 300px;
 }
+
