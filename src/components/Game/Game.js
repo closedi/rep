@@ -3,41 +3,50 @@ import React, { useState, useEffect } from "react";
 import Door from "./Door/Door";
 import shuffle from "./utils/utils";
 
-export function Game() {
-    const trueArr = shuffle([0,1,2]);
-      for (let i in trueArr) {
-        trueArr[i] = trueArr[i]===0
-      }
-  let stateArr = [0,0,0];
-  let [isChosen, setChosen] = useState(0)
+export class Game extends React.Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      isChosen: [false,false,false],
+      trueArr: shuffle([0,1,2]),
+    }
+  }
 
-  // const squares = this.state.squares.slice();
-  // squares[i] = this.state.xIsNext ? 'X' : 'O';
-  // this.setState({
-  //   squares: squares,
-  //   xIsNext: !this.state.xIsNext,
-  // });
 
-  function renderDoor(i) {
+  handleClick(i) {
+  const isChosen = this.state.isChosen.slice().fill(false);
+  isChosen[i] = !this.state.isChosen[i];
+  this.setState({
+    isChosen: isChosen,
+    trueArr: shuffle([0,1,2]),
+  })
+    console.log(isChosen)
+}
+
+
+
+  renderDoor(i){
      return (
     <Door
       id={i}
-      isTrue={trueArr[i]}
-      isOpen={false}
-      isChosen={stateArr[i]}
+      isTrue={this.state.trueArr[i]}
+      isChosen={this.state.isChosen[i]}
+      onClick={() => this.handleClick(i)}
      />
      )
   }
+      render() {
     return (
       <div>
       <h1 align={"center"}>Hello, game</h1>
       <div className={styles.doorField}>
-        {renderDoor(0)}
-        {renderDoor(1)}
-        {renderDoor(2)}
+        {this.renderDoor(0)}
+        {this.renderDoor(1)}
+        {this.renderDoor(2)}
       </div>
       </div>
     )
 }
+      }
 
 

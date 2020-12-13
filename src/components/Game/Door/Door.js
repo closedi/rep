@@ -6,7 +6,7 @@ function Door(props) {
   const className = (props.isChosen===true) ? styles.door_chosen : styles.door
 
 return(
-    <div className={className} align={"center"}>
+    <div className={className} onClick={props.onClick} align={"center"}>
       Дверь {props.id+1}
     </div>
   )
