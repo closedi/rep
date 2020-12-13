@@ -8,6 +8,15 @@ export function Game() {
       for (let i in trueArr) {
         trueArr[i] = trueArr[i]===0
       }
+  let stateArr = [0,0,0];
+  let [isChosen, setChosen] = useState(0)
+
+  // const squares = this.state.squares.slice();
+  // squares[i] = this.state.xIsNext ? 'X' : 'O';
+  // this.setState({
+  //   squares: squares,
+  //   xIsNext: !this.state.xIsNext,
+  // });
 
   function renderDoor(i) {
      return (
@@ -15,6 +24,7 @@ export function Game() {
       id={i}
       isTrue={trueArr[i]}
       isOpen={false}
+      isChosen={stateArr[i]}
      />
      )
   }
