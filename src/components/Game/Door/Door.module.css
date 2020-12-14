@@ -1,27 +1,50 @@
+h1 {
+  margin-bottom: 70px;
+}
+
 .doorField {
-  margin: 70px auto 0 auto;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: stretch;
 }
 
+
 .door {
-  height: 300px;
-  width: 10%;
+  height: 250px;
+  width: 30%;
   border: 2px solid gray;
   background-color: bisque;
-  padding: 10px 20px;
-  cursor: pointer;
+  padding: 10px 50px;
   margin: 0 40px;
+  cursor: pointer;
+}
+
+.door:hover {
+  transition: 0.2s;
+  box-shadow: 0 0 8px 2px rgba(208,94,94,1);
+  background-color: darkkhaki;
+  opacity: .98;
 }
 
 .door_chosen {
-  height: 300px;
-  width: 10%;
+  box-shadow: 0 0 0 4px rgba(208,94,94,1);
+  height: 250px;
+  width: 30%;
   border: 2px solid gray;
   background-color: darkkhaki;
-  padding: 10px 20px;
+  padding: 10px 50px;
+  margin: 0 40px;
   cursor: pointer;
+}
+
+.door_opened {
+  pointer-events: none;
+  box-shadow: 0 0 0 4px rgba(208,94,94,1);
+  height: 250px;
+  width: 30%;
+  border: 2px solid gray;
+  background-color: coral;
+  padding: 10px 50px;
   margin: 0 40px;
 }
 
@@ -30,3 +53,7 @@
   height: 300px;
 }
 
+.hover {
+  transition: 0.5s;
+  box-shadow: 0 0 0 10px rgba(208,94,94,1);
+}

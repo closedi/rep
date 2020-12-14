@@ -23,3 +23,4 @@ export function chose(i, array) {
 
 export default shuffle;
 
+// <button onClick={() => this.confirmAction()}>Продолжить</button>
