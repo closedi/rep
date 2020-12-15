@@ -4,28 +4,28 @@ import React, { useState, useEffect } from "react";
 function Door(props) {
   let className = (props.isChosen===true) ? styles.door_chosen : styles.door;
 
-  const [isOpen, setIsOpen] = useState({isOpen: false})
-
-  useEffect(() => {
-    open();
-  }, [props.moveConfirmed])
-
-  function open () {
-    if (props.moveConfirmed && !props.isChosen && !props.isTrue) {
-      setIsOpen({isOpen: true})
-    }
-  }
+  // const [isOpen, setIsOpen] = useState({isOpen: false})
+  //
+  // useEffect(() => {
+  //   open();
+  // }, [props.moveConfirmed])
+  //
+  // function open () {
+  //   if (props.moveConfirmed && !props.isChosen && !props.isTrue) {
+  //     setIsOpen({isOpen: true})
+  //   }
+  // }
 
   let [styleCl, setStyleCl] = useState(styles.door)
 
   useEffect(() => {
     setStyleCl(styleCl = handleClass)
-  },[[props.isChosen, props.isOpen]])
+  },[[props.isChosen, props.isOpened]])
 
   function handleClass() {
     if (props.isChosen === true) {
      styleCl = styles.door_chosen
-    } else if (isOpen.isOpen === true) {
+    } else if (props.isOpened === true) {
       styleCl = styles.door_opened
     } else styleCl = styles.door
     return styleCl;

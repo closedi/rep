@@ -1,4 +1,4 @@
-function shuffle(numPool) {
+export function shuffle(numPool) {
 
   for(
     let j, x, i = numPool.length; i;
@@ -11,6 +11,9 @@ function shuffle(numPool) {
   return numPool;
 };
 
+export const toBool = (arr) => arr.map(value => !!value);
+
+
 export function chose(i, array) {
   const item = i;
   const arr = array;
@@ -21,6 +24,5 @@ export function chose(i, array) {
   return arr;
 }
 
-export default shuffle;
 
 // <button onClick={() => this.confirmAction()}>Продолжить</button>
