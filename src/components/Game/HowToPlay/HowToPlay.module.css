@@ -76,3 +76,9 @@ h3 {
   box-shadow: 0 0 8px 2px rgba(208,94,94,1);
   background-color: darkkhaki;
 }
+
+.button_open:hover {
+  transition: 0.2s;
+  box-shadow: 0 0 8px 2px rgba(208,94,94,1);
+  background-color: darkkhaki;
+}

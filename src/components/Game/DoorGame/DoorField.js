@@ -57,7 +57,7 @@ export class DoorField extends React.Component{
 
     this.openFalseDoor();
   } else {
-      this.clearGame();
+      this.clearRound();
     }}
 
 
@@ -116,7 +116,10 @@ export class DoorField extends React.Component{
       })
     };
 
-  clearGame() {
+  clearRound() {
+
+    let result = this.state.roundsCount;
+    result++;
     this.setState({
       isChosen: [false, false, false],
       trueArr: shuffle([0,1,2]),
@@ -124,6 +127,7 @@ export class DoorField extends React.Component{
       isOpened: [false, false, false],
       openCount: 0,
       gameResult: 'none',
+      roundsCount: result,
   })}
 
   renderDoor(i){
@@ -143,19 +147,19 @@ export class DoorField extends React.Component{
       render() {
     return (
       <div tabIndex={'-1'} onKeyDown={(e) => this.confirmActionOnKey(e)}>
-      <h1 align={"center"}>Round {this.state.roundsCount}</h1>
+      <h1 align={"center"}>Round {this.state.roundsCount} {(this.state.gameResult === 'none') ? '' : this.state.gameResult.toUpperCase()}</h1>
         <section className={styles.main}>
         <div className={styles.doorField}>
         {this.renderDoor(0)}
         {this.renderDoor(1)}
         {this.renderDoor(2)}
           <button className={styles.doorButton} onClick={() => this.confirmAction()}>{this.state.gameResult !== 'none' ? 'Следующая игра' : 'Продолжить'}</button>
-          <button onClick={() => this.clearGame()}>Сбросить</button>
+          <button onClick={() => this.clearRound()}>Пропустить раунд</button>
         </div>
           <div style={{
             margin: '20px',
             textAlign: "center",
-          }}> Make your choice and Press the "Continue" button (or Space instead).
+          }}> Make your choice and Press the "Continue" button (or "Space" instead).
           </div>
         </section>
       </div>
