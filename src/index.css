@@ -6,7 +6,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
   padding: 0;
-  width: 75%;
   margin: 0 auto;
   user-select: none;
 }

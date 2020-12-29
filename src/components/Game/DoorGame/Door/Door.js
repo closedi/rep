@@ -3,17 +3,6 @@ import styles from './Door.module.css';
 import React, { useState, useEffect } from "react";
 
 function Door(props) {
-  // const [isOpen, setIsOpen] = useState({isOpen: false})
-  //
-  // useEffect(() => {
-  //   open();
-  // }, [props.moveConfirmed])
-  //
-  // function open () {
-  //   if (props.moveConfirmed && !props.isChosen && !props.isTrue) {
-  //     setIsOpen({isOpen: true})
-  //   }
-  // }
 
   let [styleCl, setStyleCl] = useState(styles.door)
 
@@ -21,9 +10,13 @@ function Door(props) {
     setStyleCl(styleCl = handleClass())
   },[[props.isChosen, props.isOpened]])
 
+
+
   function handleClass() {
-    if (props.isChosen === true) {
+    if (props.isChosen === true && props.gameResult === 'none') {
      styleCl = styles.door_chosen
+    } else if (props.isChosen === true && props.gameResult !== 'none') {
+        styleCl = (props.isTrue) ? styles.door_opened_good : styles.door_opened_bad
     } else if (props.isOpened === 'open' && props.isTrue) {
       styleCl = styles.door_opened_good
     } else if (props.isOpened === 'open' && !props.isTrue) {
@@ -31,7 +24,6 @@ function Door(props) {
     } else styleCl = styles.door
     return styleCl;
   }
-
 
 
 
