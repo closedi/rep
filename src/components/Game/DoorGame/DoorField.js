@@ -1,6 +1,7 @@
 import styles from './Door/Door.module.css';
 import React from "react";
 import Door from "./Door/Door";
+import Statistics from "../Statistics/Statictics";
 import { shuffle } from "../../utils/utils";
 
 export class DoorField extends React.Component{
@@ -12,8 +13,9 @@ export class DoorField extends React.Component{
       moveConfirmed: false,
       isOpened: [false, false, false],
       openCount: 0,
-      gameResult: 'none',
-      roundsCount: 1,
+      roundResult: 'none',
+      resultsCount: [],
+      // choiceIsChanged: {door: 0, changed: false},
     }
   }
 
@@ -31,6 +33,7 @@ export class DoorField extends React.Component{
     const confirmed = function () {
       return (isChosen.includes(true))
     }
+
   this.setState({
     isChosen: isChosen,
     moveConfirmed: confirmed(),
@@ -44,7 +47,7 @@ export class DoorField extends React.Component{
   }
 
   confirmAction() {
-    if (this.state.gameResult === 'none') {
+    if (this.state.roundResult === 'none') {
     const isChosen = this.state.isChosen.slice()
     const confirmed = function () {
       return (isChosen.includes(true))
@@ -94,7 +97,7 @@ export class DoorField extends React.Component{
     let isOpened = this.state.isOpened.slice();
     const openCount = this.state.openCount;
     let isChosen = this.state.isChosen.slice();
-    let result = this.state.gameResult
+    let result = this.state.roundResult
 
     for (let i in isOpened) {
       if (isOpened[i] === 'open' && isTrue[i] === true) {
@@ -110,25 +113,38 @@ export class DoorField extends React.Component{
       isOpened = Array(3).fill('open');
     }
       this.setState({
-        gameResult: result,
+        roundResult: result,
         isOpened: isOpened,
         isChosen: isChosen,
       })
     };
 
   clearRound() {
-
-    let result = this.state.roundsCount;
-    result++;
+    let result = this.state.roundResult;
+    const count = this.state.resultsCount;
+    count.push(result);
     this.setState({
       isChosen: [false, false, false],
       trueArr: shuffle([0,1,2]),
       moveConfirmed: false,
       isOpened: [false, false, false],
       openCount: 0,
-      gameResult: 'none',
-      roundsCount: result,
+      roundResult: 'none',
+      resultsCount: count,
   })}
+
+  resetState() {
+    this.setState({
+      isChosen: [false, false, false],
+      trueArr: shuffle([0,1,2]),
+      moveConfirmed: false,
+      isOpened: [false, false, false],
+      openCount: 0,
+      roundResult: 'none',
+      resultsCount: [],
+      choiceIsChanged: false,
+
+    })}
 
   renderDoor(i){
      return (
@@ -138,7 +154,7 @@ export class DoorField extends React.Component{
       isChosen={this.state.isChosen[i]}
       onClick={() => this.handleClick(i)}
       isOpened={this.state.isOpened[i]}
-      gameResult={this.state.gameResult}
+      gameResult={this.state.roundResult}
      />
      )
   }
@@ -147,14 +163,18 @@ export class DoorField extends React.Component{
       render() {
     return (
       <div tabIndex={'-1'} onKeyDown={(e) => this.confirmActionOnKey(e)}>
-      <h1 align={"center"}>Round {this.state.roundsCount} {(this.state.gameResult === 'none') ? '' : this.state.gameResult.toUpperCase()}</h1>
+      <h1 align={"center"}>Round {this.state.resultsCount.length + 1} {(this.state.roundResult === 'none') ? '' : this.state.roundResult.toUpperCase()}</h1>
         <section className={styles.main}>
         <div className={styles.doorField}>
+          <Statistics
+            result={this.state.resultsCount}
+          />
         {this.renderDoor(0)}
         {this.renderDoor(1)}
         {this.renderDoor(2)}
-          <button className={styles.doorButton} onClick={() => this.confirmAction()}>{this.state.gameResult !== 'none' ? 'Следующая игра' : 'Продолжить'}</button>
-          <button onClick={() => this.clearRound()}>Пропустить раунд</button>
+          <button className={styles.doorButton} onClick={() => this.confirmAction()}>{this.state.roundResult !== 'none' ? 'Next round' : 'Continue'}</button>
+          <button onClick={() => this.clearRound()}>Skip round</button>
+          <button onClick={() => this.resetState()}>Clear game</button>
         </div>
           <div style={{
             margin: '20px',

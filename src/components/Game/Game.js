@@ -6,7 +6,7 @@ import styles from "./HowToPlay/HowToPlay.module.css";
 function Game () {
 
   let [countRounds, setCountRounds] = useState(0)
-  let resultCounter = () => {setCountRounds(countRounds++); console.log(countRounds)};
+  let resultCounter = () => {setCountRounds(countRounds++)};
 
 
   return (
