@@ -29,7 +29,7 @@ function Door(props) {
 
 return(
     <div className={styleCl} onClick={props.onClick}>
-      Дверь {props.id+1}
+      Door {props.id+1}
     </div>
   )
 }

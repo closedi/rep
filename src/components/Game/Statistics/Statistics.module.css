@@ -1,0 +1,44 @@
+.wrapper {
+  padding-right: 10px;
+  position: absolute;
+  left: 10%;
+  top:12%;
+  line-height: 1.5em;
+  height: 70%;
+}
+
+.wrapper p {
+  text-align: left;
+}
+.wrapper p span {
+  float: right;
+}
+
+.wrapper ul {
+  height: inherit;
+  padding: 0;
+  list-style: none;
+  overflow-y: auto;
+  background-color: #a9a9a926;
+}
+.wrapper ul li {
+  padding: 0 40px;
+  border: 1px cornsilk solid;
+  text-align: left;
+}
+
+.neutral {
+  background-color: darkgrey;
+}
+
+.win {
+  background-color: lightgreen;
+}
+
+.lose {
+  background-color: coral;
+}
+
+.count-title {
+  float: left;
+}

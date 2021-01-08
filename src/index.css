@@ -8,6 +8,7 @@ body {
   padding: 0;
   margin: 0 auto;
   user-select: none;
+  background-color: rgba(218,255,239,0.11);
 }
 
 *:focus {
