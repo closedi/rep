@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import styles from './Statistics.module.css';
+import { winstreak } from "../../utils/utils"
 
 function Statistics (props) {
 
@@ -9,6 +10,8 @@ function Statistics (props) {
   const totalWin = result.filter((item => item === 'win')).length
   const totalLose = result.filter((item => item === 'lose')).length
   const winrate = ((Math.round((totalWin / result.length).toFixed(2)*100)))
+  const winstreakMax = winstreak(result).max;
+  const winstreakCurrent = winstreak(result).current;
 
   useEffect(() => {
       renderLine(result)
@@ -37,6 +40,8 @@ function Statistics (props) {
         <p>Win: <span>{totalWin}</span></p>
         <p>Lose: <span>{totalLose}</span></p>
         <p>Winrate: <span>{(isNaN(winrate)) ? '0%' : `${winrate}%`}</span></p>
+        <p>Maximum winstreak: <span>{(winstreakMax)}</span></p>
+        <p>Current winstreak: <span>{(winstreakCurrent)}</span></p>
         <ul>
           {renderLine(result)}
         </ul>

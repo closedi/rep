@@ -13,7 +13,6 @@ export function HowToPlay (props) {
     }
   function confirmActionOnKey(e) {
     if (e.key === 'Escape') {
-      console.log(e.key)
       handleClick();
     }
   }
