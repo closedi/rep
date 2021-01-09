@@ -15,6 +15,7 @@ export class DoorField extends React.Component{
       openCount: 0,
       roundResult: 'none',
       resultsCount: [],
+      autoplay: 0,
       // choiceIsChanged: {door: 0, changed: false},
     }
   }
@@ -38,6 +39,28 @@ export class DoorField extends React.Component{
     isChosen: isChosen,
     moveConfirmed: confirmed(),
   })}
+
+  autoplayRounds(e) {
+    let count = Array.from(this.state.autoplay)
+    count.push(e.nativeEvent.data)
+    let amount = +(count.join(''))
+
+    let validate = (amount) => {
+      switch (amount) {
+        case (isNaN(amount)): count = 0;
+        break;
+        case (amount <= 0): count = 0;
+        break;
+      }}
+
+      validate(amount);
+
+
+    this.setState({
+      autoplay: count,
+    })
+    console.log(e)
+  }
 
 
   confirmActionOnKey(e) {
@@ -175,6 +198,15 @@ export class DoorField extends React.Component{
           <button className={styles.doorButton} onClick={() => this.confirmAction()}>{this.state.roundResult !== 'none' ? 'Next round' : 'Continue'}</button>
           <button onClick={() => this.clearRound()}>Skip round</button>
           <button onClick={() => this.resetState()}>Clear game</button>
+          <input
+            id={"auto-count"}
+            type={"number"}
+            min={"1"}
+            max={"100"}
+            placeholder={"Rounds to auto-play (1-100)"}
+            onChange={event => this.autoplayRounds(event)}>
+          </input>
+          <button id ={"auto-submit"} type={"submit"}>Отправить</button>
         </div>
           <div style={{
             margin: '20px',
