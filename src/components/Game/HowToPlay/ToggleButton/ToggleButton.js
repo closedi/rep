@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import styles from '../HowToPlay/HowToPlay.module.css';
+import React from "react";
 
 
 export function ToggleButton (props) {

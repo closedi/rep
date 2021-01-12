@@ -1,3 +1,41 @@
+@media all and (max-width: 1600px){
+  .wrapper {
+    width: 100%;
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    padding: 0!important;
+  }
+  .statWrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .titles {
+    display: inline-block;
+    background-color: cornsilk;
+    width: 25%;
+  }
+  .titles p {
+    margin-right: 25px;
+  }
+
+  .lines {
+    width: 50%;
+    text-align: center;
+    max-height: 250px !important;
+    margin: 0;
+    overflow-y: auto;
+  }
+}
+
+.lines {
+  text-align: center;
+  max-height: 350px;
+  margin: 0;
+  overflow-y: auto;
+}
+
 .wrapper {
   padding-right: 10px;
   position: absolute;
@@ -7,6 +45,9 @@
   height: 70%;
 }
 
+.wrapper h3 {text-align: center}
+
+
 .wrapper p {
   text-align: left;
 }
@@ -14,7 +55,7 @@
   float: right;
 }
 
-.wrapper ul {
+.lines {
   height: inherit;
   padding: 0;
   list-style: none;
@@ -22,9 +63,9 @@
   background-color: #a9a9a926;
 }
 .wrapper ul li {
-  padding: 0 40px;
   border: 1px cornsilk solid;
   text-align: left;
+  padding-left: 40px;
 }
 
 .neutral {

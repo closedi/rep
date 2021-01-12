@@ -15,8 +15,6 @@ export class DoorField extends React.Component{
       openCount: 0,
       roundResult: 'none',
       resultsCount: [],
-      autoplay: 0,
-      // choiceIsChanged: {door: 0, changed: false},
     }
   }
 
@@ -39,28 +37,6 @@ export class DoorField extends React.Component{
     isChosen: isChosen,
     moveConfirmed: confirmed(),
   })}
-
-  autoplayRounds(e) {
-    let count = Array.from(this.state.autoplay)
-    count.push(e.nativeEvent.data)
-    let amount = +(count.join(''))
-
-    let validate = (amount) => {
-      switch (amount) {
-        case (isNaN(amount)): count = 0;
-        break;
-        case (amount <= 0): count = 0;
-        break;
-      }}
-
-      validate(amount);
-
-
-    this.setState({
-      autoplay: count,
-    })
-    console.log(e)
-  }
 
 
   confirmActionOnKey(e) {
@@ -165,7 +141,6 @@ export class DoorField extends React.Component{
       openCount: 0,
       roundResult: 'none',
       resultsCount: [],
-      choiceIsChanged: false,
 
     })}
 
@@ -182,6 +157,19 @@ export class DoorField extends React.Component{
      )
   }
 
+  continueButton () {
+    let result;
+    switch (this.state.openCount) {
+      case 0: result = 'Choose a door';
+      break;
+      case 1: result = 'Stick or switch';
+      break;
+      default: break;
+    }
+    return result;
+  }
+
+
 
       render() {
     return (
@@ -189,31 +177,28 @@ export class DoorField extends React.Component{
       <h1 align={"center"}>Round {this.state.resultsCount.length + 1} {(this.state.roundResult === 'none') ? '' : this.state.roundResult.toUpperCase()}</h1>
         <section className={styles.main}>
         <div className={styles.doorField}>
-          <Statistics
-            result={this.state.resultsCount}
-          />
         {this.renderDoor(0)}
         {this.renderDoor(1)}
         {this.renderDoor(2)}
-          <button className={styles.doorButton} onClick={() => this.confirmAction()}>{this.state.roundResult !== 'none' ? 'Next round' : 'Continue'}</button>
+          <button
+            className={styles.doorButton}
+            onClick={() => this.confirmAction()}>{this.state.roundResult !== 'none' ? 'Next round' : this.continueButton()}
+          </button>
           <button onClick={() => this.clearRound()}>Skip round</button>
           <button onClick={() => this.resetState()}>Clear game</button>
-          <input
-            id={"auto-count"}
-            type={"number"}
-            min={"1"}
-            max={"100"}
-            placeholder={"Rounds to auto-play (1-100)"}
-            onChange={event => this.autoplayRounds(event)}>
-          </input>
-          <button id ={"auto-submit"} type={"submit"}>Отправить</button>
         </div>
           <div style={{
             margin: '20px',
             textAlign: "center",
-          }}> Make your choice and Press the "Continue" button (or "Space" instead).
+            height: "40px",
+          }}>Make your choice and Press the "Choose a door" button (or "Space" instead).
+            <br/>
+            <a href={"https://ru.wikipedia.org/wiki/Парадокс_Монти_Холла"} target={"_blank"} rel={"noreferrer"}>{this.state.resultsCount.length > 4 ? 'For more info check the Wiki page' : ''}</a>
           </div>
         </section>
+        <Statistics
+          result={this.state.resultsCount}
+        />
       </div>
     )}
 }
