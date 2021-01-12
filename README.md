@@ -6,7 +6,7 @@ The game was inspired by "Let's make a Deal" TV show. You can manually test some
 
 ### Game description
 
-There are 3 doors on a field. One of them contains a Treasure Map (which we want to unlock), but another two doors have some useless trash boxes behind. Map's location is changing randomly for each round.
+There are 3 doors on the field. One of them contains a Treasure Map (which we want to unlock), but another two doors have some useless trash boxes behind. Map's location is changing randomly for each round.
 
 ### Order of moves
 
@@ -23,4 +23,4 @@ There are 3 doors on a field. One of them contains a Treasure Map (which we want
 
 ## App inside
 
-Game is using pure React-app basis in addition with a built-in css-modules package. 
+Game is using pure React-app basis in addition with a built-in css-modules package to style components.
