@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import {ToggleButton} from "../ToggleButton/ToggleButton";
+import React, { useState } from "react";
+import {ToggleButton} from "./ToggleButton/ToggleButton";
 import styles from './HowToPlay.module.css';
 
-export function HowToPlay (props) {
+export function HowToPlay () {
 
 
   let [close, setClosed] = useState({closed: false, style: styles.frame});

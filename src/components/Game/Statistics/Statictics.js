@@ -1,12 +1,11 @@
-import React, {useState, useEffect} from "react";
+import React, { useEffect } from "react";
 import styles from './Statistics.module.css';
 import { winstreak } from "../../utils/utils"
 
 function Statistics (props) {
 
-  let [ ...result ] = props.result;
-  // console.log(len)
-  // console.log(result)
+  const [ ...result ] = props.result;
+
   const totalWin = result.filter((item => item === 'win')).length
   const totalLose = result.filter((item => item === 'lose')).length
   const winrate = ((Math.round((totalWin / result.length).toFixed(2)*100)))
@@ -36,15 +35,19 @@ function Statistics (props) {
     return (
       <div className={styles.wrapper}>
         <h3 style={{width: '250px'}}>Statistics</h3>
+        <div className={styles.statWrapper}>
+        <div className={styles.titles}>
         <p>Rounds played: <span>{result.length}</span></p>
         <p>Win: <span>{totalWin}</span></p>
         <p>Lose: <span>{totalLose}</span></p>
         <p>Winrate: <span>{(isNaN(winrate)) ? '0%' : `${winrate}%`}</span></p>
         <p>Maximum winstreak: <span>{(winstreakMax)}</span></p>
         <p>Current winstreak: <span>{(winstreakCurrent)}</span></p>
-        <ul>
+        </div>
+        <ul className={styles.lines}>
           {renderLine(result)}
         </ul>
+      </div>
       </div>
     )
   }
