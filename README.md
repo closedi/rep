@@ -18,7 +18,9 @@ There are 3 doors on the field. One of them contains a Treasure Map (which we wa
 ### Controls
 
 'Space' - key's binded as your main button.
+
 'Skip round' - button allows you to jump to the next round immediately.
+
 'Clear game' - click this to clear all game stats and starts a new game.
 
 ## App inside
