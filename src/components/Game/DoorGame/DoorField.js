@@ -29,13 +29,11 @@ export class DoorField extends React.Component{
   handleClick(i) {
   const isChosen = this.state.isChosen.slice().fill(false);
   isChosen[i] = !this.state.isChosen[i];
-    const confirmed = function () {
-      return (isChosen.includes(true))
-    }
+  const confirmed = isChosen.includes(true)
 
   this.setState({
     isChosen: isChosen,
-    moveConfirmed: confirmed(),
+    moveConfirmed: confirmed,
   })}
 
 
@@ -47,16 +45,6 @@ export class DoorField extends React.Component{
 
   confirmAction() {
     if (this.state.roundResult === 'none') {
-    const isChosen = this.state.isChosen.slice()
-    const confirmed = function () {
-      return (isChosen.includes(true))
-    }
-
-     this.setState({
-       isChosen: isChosen,
-       moveConfirmed: confirmed(),
-     })
-
     this.openFalseDoor();
   } else {
       this.clearRound();
@@ -66,7 +54,7 @@ export class DoorField extends React.Component{
   openFalseDoor() {
     if (this.state.moveConfirmed) {
     const falseDoorArr = this.state.isOpened.slice();
-    const checkFalseDoorArr = (falseDoorArr.includes('open'));
+    const checkFalseDoorArr = falseDoorArr.includes('open');
     let count = 0;
       if (!checkFalseDoorArr) {
         for (let i in falseDoorArr) {
@@ -122,6 +110,7 @@ export class DoorField extends React.Component{
     let result = this.state.roundResult;
     const count = this.state.resultsCount;
     count.push(result);
+
     this.setState({
       isChosen: [false, false, false],
       trueArr: shuffle([0,1,2]),
