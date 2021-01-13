@@ -13,7 +13,7 @@ There are 3 doors on the field. One of them contains a Treasure Map (which we wa
 1. At the first step you should pick one of the doors and press 'Choose a door' button.
 2. Your opponent(computer) make his choice by opening one of the doors with a trash.
 3. Now you could choose again. Pick the same door or another (stick or switch).
-4. All the doors are opened. Did you succeed choosing the right one?
+4. All the doors are opened. Have you succeed choosing the right one?
 
 ### Controls
 
